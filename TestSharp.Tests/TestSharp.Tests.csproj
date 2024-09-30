@@ -1,76 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">WIN</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7D26C919-781D-47B4-B6DD-5D6CF49CA4D5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>TestSharp.Tests</RootNamespace>
-    <AssemblyName>TestSharp.Tests</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WIN|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'OSX|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\MacOSX</OutputPath>
-    <WarningLevel>4</WarningLevel>
     <DefineConstants>DEBUG;OSX</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Xml" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Helpers\Resources\ZipHelperTest.zip" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\TestSharp\TestSharp.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigAssertTest.cs" />
-    <Compile Include="ConfigHelperTest.cs" />
-    <Compile Include="DirectoryHelperTest.cs" />
-    <Compile Include="EnumerableAssertTest.cs" />
-    <Compile Include="EventLogHelperTests.cs" />
-    <Compile Include="ExceptionHelperTest.cs" />
-    <Compile Include="FileHelperTest.cs" />
-    <Compile Include="FlowAssertTest.cs" />
-    <Compile Include="NetHelperTest.cs" />
-    <Compile Include="ProcessHelperTest.cs" />
-    <Compile Include="RegexAssertTest.cs" />
-    <Compile Include="ServiceHelperTest.cs" />
-    <Compile Include="SqlHelperTest.cs" />
-    <Compile Include="VSProjectHelperTest.cs" />
-    <Compile Include="WebHostHelperTest.cs" />
-    <Compile Include="WmiHelperTest.cs" />
-    <Compile Include="ZipHelperTest.cs" />
-    <Compile Include="Helpers\WebSiteStubHelper.cs" />
-    <Compile Include="TimeAssertTest.cs" />
+    <PackageReference Include="NUnit" Version="2.6.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\TestSharp\TestSharp.csproj">
-      <Project>{A36D353D-729E-45DC-8880-45AE72BFE12D}</Project>
-      <Name>TestSharp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

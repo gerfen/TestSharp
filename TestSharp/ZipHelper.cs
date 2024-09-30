@@ -1,7 +1,8 @@
 ﻿
-using Ionic.Utils.Zip;
 using System.IO;
 using System;
+using System.IO.Compression;
+
 namespace TestSharp
 {
 	/// <summary>
@@ -26,7 +27,7 @@ namespace TestSharp
 				throw new ArgumentException("Diretório destino '" + destinationDirectoryPath + "' não existe.", "destinationDirectoryPath");
 			}
 
-			ZipFile.Read(zipFilePath).ExtractAll(destinationDirectoryPath);
+			ZipFile.OpenRead(zipFilePath).ExtractToDirectory(destinationDirectoryPath);
 		}
 	}
 }

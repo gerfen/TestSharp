@@ -1,35 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Configuration Condition=" '$(Configuration)' == '' ">WIN</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A36D353D-729E-45DC-8880-45AE72BFE12D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>TestSharp</RootNamespace>
-    <AssemblyName>TestSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WIN|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\TestSharp.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='WIN|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;WIN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\TestSharp.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='WIN|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;WIN</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\TestSharp.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'OSX|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\MacOSX</OutputPath>
-    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;OSX</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='OSX|x86'">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MacOSX</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;OSX</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='OSX|x64'">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MacOSX</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;OSX</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
@@ -38,62 +51,17 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>TestSharp.snk</AssemblyOriginatorKeyFile>
+    <AssemblyTitle>TestSharp</AssemblyTitle>
+    <Company>Skahal Studios</Company>
+    <Product>TestSharp</Product>
+    <Copyright>Copyright © Skahal Studios 2012</Copyright>
+    <AssemblyVersion>0.0.6.0</AssemblyVersion>
+    <FileVersion>0.0.6.0</FileVersion>
   </PropertyGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="Ionic.Utils.Zip">
-      <HintPath>..\References\Ionic.Utils.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="nunit.framework" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssertFailedException.cs" />
-    <Compile Include="AssertHelper.cs" />
-    <Compile Include="ConfigAssert.cs" />
-    <Compile Include="ConfigHelper.cs" />
-    <Compile Include="DateTimeAssert.cs" />
-    <Compile Include="DirectoryAssert.cs" />
-    <Compile Include="DirectoryHelper.cs" />
-    <Compile Include="EnumerableAssert.cs" />
-    <Compile Include="EventLogHelper.cs" />
-    <Compile Include="ExceptionAssert.cs" />
-    <Compile Include="ExceptionHelper.cs" />
-    <Compile Include="FileAssert.cs" />
-    <Compile Include="FileHelper.cs" />
-    <Compile Include="FlowAssert.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IO\Context\IDirectoryDiscoverer.cs" />
-    <Compile Include="IO\Context\IIOContextFactory.cs" />
-    <Compile Include="IO\Context\IOContext.cs" />
-    <Compile Include="IO\Context\TeamCity\TeamCityDirectoryDiscoverer.cs" />
-    <Compile Include="IO\Context\TeamCity\TeamCityIOContextFactory.cs" />
-    <Compile Include="IO\Context\VisualStudio\VisualStudioDirectoryDiscoverer.cs" />
-    <Compile Include="IO\Context\VisualStudio\VisualStudioIOContextFactory.cs" />
-    <Compile Include="NetHelper.cs" />
-    <Compile Include="PathAssert.cs" />
-    <Compile Include="ProcessAssert.cs" />
-    <Compile Include="ProcessHelper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegexAssert.cs" />
-    <Compile Include="ServiceAssert.cs" />
-    <Compile Include="ServiceHelper.cs" />
-    <Compile Include="SqlHelper.cs" />
-    <Compile Include="TextAssert.cs" />
-    <Compile Include="VSProjectHelper.cs" />
-    <Compile Include="WebHostHelper.cs" />
-    <Compile Include="WmiAssert.cs" />
-    <Compile Include="WmiHelper.cs" />
-    <Compile Include="ZipHelper.cs" />
-    <Compile Include="TimeAssert.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TestSharp.snk" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
   </ItemGroup>
 </Project>
